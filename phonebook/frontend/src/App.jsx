@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import { DisplayComponent, Notification} from './components/phonecomp'
 import dbapps from './services/dbapps'
 
