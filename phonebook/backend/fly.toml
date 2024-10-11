@@ -1,20 +1,27 @@
-app = "phonebook-ancient-moon-6798"
-primary_region = "lhr"
+# fly.toml app configuration file generated for phonebook-ancient-moon-6798 on 2024-09-26T12:43:41+01:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
-[build]
-builder = "paketobuildpacks/builder:base"
-buildpacks = [ "gcr.io/paketo-buildpacks/nodejs" ]
-image = "flyio/hellofly:latest"
+app = 'phonebook-ancient-moon-6798'
+primary_region = 'lhr'
 
 [http_service]
-auto_start_machines = true
-auto_stop_machines = true
-force_https = true
-internal_port = 8_080
-min_machines_running = 0
-processes = [ "app" ]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
 
 [[vm]]
-cpu_kind = "shared"
-cpus = 1
-memory = "1gb"
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+
+[env]
+  PORT = "8080"
+
+[build]
+  builder = "paketobuildpacks/builder:base"
+  buildpacks = ["gcr.io/paketo-buildpacks/nodejs"]

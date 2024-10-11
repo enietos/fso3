@@ -15,7 +15,7 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('')
   const [newSearch, setNewSearch] = useState('')
   const [filteredPersons, setNewFilteredPerson] = useState([])
-  const [errorMessage, setErrorMessage] = useState('some error happened...')
+  const [errorMessage, setErrorMessage] = useState('App starting!')
 
   useEffect(() => {
     dbapps      
@@ -99,6 +99,9 @@ console.log("this is persons ",persons)
         setNewNumber(""); // Clear the number field if you have one
         setErrorMessage("Person added succesfully!")
       })
+      .catch(error => {
+        setErrorMessage(error.response.data.error)
+        console.log(error.response.data.error)})
       console.log("Number added!")
       return <div><Notification message={errorMessage} setErrorMessage={setErrorMessage}></Notification></div>
       }
